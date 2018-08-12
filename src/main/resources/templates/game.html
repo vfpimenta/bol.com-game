@@ -3,8 +3,141 @@
 <head>
     <title>Bol.com Game</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style type="text/css">
+    	table, th, td {
+		   border: 1px solid black;
+		   text-align: center;
+		}
+		.p1 {
+			background: #fbb4ae;
+		}
+		.p2 {
+			background: #b3cde3;
+		}
+    </style>
 </head>
 <body>
-    <p th:text="'Hello, ' + ${name} + '!'" />
+	<div th:unless="${gameState.gameOver}" style="display: inline-flex;">
+    	<p th:text="'Current Player: ' + ${gameState.currentPlayer}" />
+    	<div th:if="${gameState.currentPlayer} == 1">
+    		<div style="width: 10px; height: 10px; background: #fbb4ae; margin-top: 20px; margin-left: 5px;"></div>
+    	</div>
+    	<div th:if="${gameState.currentPlayer} == 2">
+    		<div style="width: 10px; height: 10px; background: #b3cde3; margin-top: 20px; margin-left: 5px;"></div>
+    	</div>
+    </div>
+    <div th:if="${gameState.gameOver}">
+    	<h1>Game Over!</h1>
+    	<p th:text="'The winner is: ' + ${gameState.winner} + '!'" />
+    </div>
+    <a href="/game?reset=true"><p>Reset Game</p></a>
+    <table width="1000px" height="200px" opacity=0.6>
+    	<tr>
+    		<td class="p1" rowspan="2">
+    			<p th:text="${gameState.board.getTileStones(6)}"></p>
+    		</td>
+    		<td class="p1">
+    			<div th:if="${gameState.currentPlayer} == 1">
+    				<a href="/game?tile=5" th:text="${gameState.board.getTileStones(5)}"></a>
+    			</div>
+    			<div th:unless="${gameState.currentPlayer} == 1">
+    				<p th:text="${gameState.board.getTileStones(5)}"></p>
+    			</div>
+    		</td>
+    		<td class="p1">
+    			<div th:if="${gameState.currentPlayer} == 1">
+    				<a href="/game?tile=4" th:text="${gameState.board.getTileStones(4)}"></a>
+    			</div>
+    			<div th:unless="${gameState.currentPlayer} == 1">
+    				<p th:text="${gameState.board.getTileStones(4)}"></p>
+    			</div>
+    		</td>
+    		<td class="p1">
+    			<div th:if="${gameState.currentPlayer} == 1">
+    				<a href="/game?tile=3" th:text="${gameState.board.getTileStones(3)}"></a>
+    			</div>
+    			<div th:unless="${gameState.currentPlayer} == 1">
+    				<p th:text="${gameState.board.getTileStones(3)}"></p>
+    			</div>
+    		</td>
+    		<td class="p1">
+    			<div th:if="${gameState.currentPlayer} == 1">
+    				<a href="/game?tile=2" th:text="${gameState.board.getTileStones(2)}"></a>
+    			</div>
+    			<div th:unless="${gameState.currentPlayer} == 1">
+    				<p th:text="${gameState.board.getTileStones(2)}"></p>
+    			</div>
+    		</td>
+    		<td class="p1">
+    			<div th:if="${gameState.currentPlayer} == 1">
+    				<a href="/game?tile=1" th:text="${gameState.board.getTileStones(1)}"></a>
+    			</div>
+    			<div th:unless="${gameState.currentPlayer} == 1">
+    				<p th:text="${gameState.board.getTileStones(1)}"></p>
+    			</div>
+    		</td>
+    		<td class="p1">
+    			<div th:if="${gameState.currentPlayer} == 1">
+    				<a href="/game?tile=0" th:text="${gameState.board.getTileStones(0)}"></a>
+    			</div>
+    			<div th:unless="${gameState.currentPlayer} == 1">
+    				<p th:text="${gameState.board.getTileStones(0)}"></p>
+    			</div>
+    		</td>
+    		<td class="p2" rowspan="2">
+    			<p th:text="${gameState.board.getTileStones(13)}"></p>
+    		</td>
+    	</tr>
+    	<tr>
+    		<td class="p2">
+    			<div th:if="${gameState.currentPlayer} == 2">
+    				<a href="/game?tile=7" th:text="${gameState.board.getTileStones(7)}"></a>
+    			</div>
+    			<div th:unless="${gameState.currentPlayer} == 2">
+    				<p th:text="${gameState.board.getTileStones(7)}"></p>
+    			</div>
+    		</td>
+    		<td class="p2">
+    			<div th:if="${gameState.currentPlayer} == 2">
+    				<a href="/game?tile=8" th:text="${gameState.board.getTileStones(8)}"></a>
+    			</div>
+    			<div th:unless="${gameState.currentPlayer} == 2">
+    				<p th:text="${gameState.board.getTileStones(8)}"></p>
+    			</div>
+    		</td>
+    		<td class="p2">
+    			<div th:if="${gameState.currentPlayer} == 2">
+    				<a href="/game?tile=9" th:text="${gameState.board.getTileStones(9)}"></a>
+    			</div>
+    			<div th:unless="${gameState.currentPlayer} == 2">
+    				<p th:text="${gameState.board.getTileStones(9)}"></p>
+    			</div>
+    		</td>
+    		<td class="p2">
+    			<div th:if="${gameState.currentPlayer} == 2">
+    				<a href="/game?tile=10" th:text="${gameState.board.getTileStones(10)}"></a>
+    			</div>
+    			<div th:unless="${gameState.currentPlayer} == 2">
+    				<p th:text="${gameState.board.getTileStones(10)}"></p>
+    			</div>
+    		</td>
+    		<td class="p2">
+    			<div th:if="${gameState.currentPlayer} == 2">
+    				<a href="/game?tile=11" th:text="${gameState.board.getTileStones(11)}"></a>
+    			</div>
+    			<div th:unless="${gameState.currentPlayer} == 2">
+    				<p th:text="${gameState.board.getTileStones(11)}"></p>
+    			</div>
+    		</td>
+    		<td class="p2">
+    			<div th:if="${gameState.currentPlayer} == 2">
+    				<a href="/game?tile=12" th:text="${gameState.board.getTileStones(12)}"></a>
+    			</div>
+    			<div th:unless="${gameState.currentPlayer} == 2">
+    				<p th:text="${gameState.board.getTileStones(12)}"></p>
+    			</div>
+    		</td>
+    	</tr>
+    </table>
 </body>
 </html>

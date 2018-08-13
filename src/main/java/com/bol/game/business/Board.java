@@ -26,6 +26,7 @@ public class Board {
 		cursor = 0;
 	}
 	
+	// Collect all stones from a tile, can also put cursor at the target position
 	public Integer emptyTile(int index, boolean replaceCursor) {
 		Integer stones = tiles.get(index).getStones();
 		tiles.get(index).setStones(0);
@@ -35,6 +36,7 @@ public class Board {
 		return stones;
 	}
 	
+	// Move cursor to next position
 	public Tile next(){
 		if(cursor < tiles.size()-1) {
 			cursor++;
@@ -44,6 +46,7 @@ public class Board {
 		return tiles.get(cursor);
 	}
 	
+	// Get position in front of a tile
 	public Integer opposite() {
 		if(tiles.get(cursor).isBigPit()) {
 			return cursor;
